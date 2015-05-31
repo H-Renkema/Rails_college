@@ -1,23 +1,24 @@
+# Posts controller
 class PostsController < ApplicationController
-	def index 
-		@posts = Post.all
-	end
+  def index
+    @posts = Post.all
+  end
 
-	def new
-		@post = Post.new
-		@post.title = 'Dit is een titel'
-	end
+  def new
+    @post = Post.new
+    @post.title = 'Dit is een titel'
+  end
 
-	def create
-		post = Post.new(post_params)
-		post.save
+  def create
+    post = Post.new(post_params)
+    post.save
 
-		redirect_to posts_path
-	end
+    redirect_to posts_path
+  end
 
-	private
+  private
 
-	def post_params
-		params.require(:post).permit(:title, :body)
-	end
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 end
